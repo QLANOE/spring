@@ -60,4 +60,17 @@ public class UserServicesTests {
 
 	}
 
+	@Test
+	public void testLoginUnique() {
+
+		String login = "billy";
+		String password = "pwd";
+
+		User userCreated = userServices.inscription(login, password);
+		User userCreated2 = userServices.inscription(login, password);
+		assertThat(userCreated).isNotNull();
+		assertThat(userCreated2).isNull();
+
+	}
+
 }

@@ -18,9 +18,12 @@ public class UserServices {
 
 		User user = new User();
 		user.setLogin(login);
-		user.setPassword(password);
-		userRepository.save(user);
-		return user;
+		if (chercherUserParLogin(login) == null) {
+			user.setPassword(password);
+			userRepository.save(user);
+			return user;
+		}
+		return null;
 	}
 
 	public List<User> listerUsers() {
