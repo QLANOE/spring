@@ -2,6 +2,8 @@ package poe.spring.test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import javax.management.BadAttributeValueExpException;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +25,7 @@ public class UserServicesTests {
 	UserServices userServices;
 
 	@Test
-	public void creationUser() {
+	public void creationUser() throws BadAttributeValueExpException {
 
 		assertThat(userRepository.count() == 0);
 
@@ -41,7 +43,7 @@ public class UserServicesTests {
 	}
 
 	@Test
-	public void destructionUser() {
+	public void destructionUser() throws BadAttributeValueExpException {
 
 		assertThat(userRepository.count() == 0);
 
@@ -61,7 +63,7 @@ public class UserServicesTests {
 	}
 
 	@Test
-	public void testLoginUnique() {
+	public void testLoginUnique() throws BadAttributeValueExpException {
 
 		String login = "billy";
 		String password = "pwd";

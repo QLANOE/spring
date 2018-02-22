@@ -1,7 +1,8 @@
-package poe.spring.controller;
+package poe.spring.api;
 
 import java.util.List;
 
+import javax.management.BadAttributeValueExpException;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,9 +25,17 @@ public class UserController {
 
 	@PostMapping
 	public User save(@RequestBody User user) {
-		User savedUser = userServices.inscription(user.getLogin(), user.getPassword());
-		System.out.println("user id sqsq: " + savedUser);
-		return savedUser;
+		User savedUser;
+		try {
+			savedUser = userServices.inscription(user.getLogin(), user.getPassword());
+			System.out.println("user id sqsq: " + savedUser);
+			return savedUser;
+		} catch (BadAttributeValueExpException e) {
+			e.printStackTrace();
+			return null;
+
+		}
+
 	}
 
 	@GetMapping

@@ -17,20 +17,30 @@ public class LoginCreationTests {
 	public void testTailleLogin() {
 
 		// trop petit
-		String login = "abc";
+		String login = buildStringWithSizeBetween(LoginCreation.TAILLE_MIN - 1);
 		assertThat(LoginCreation.checkTailleLogin(login)).isFalse();
 
 		// taille limite inférieure
-		login = "abcd";
+		login = buildStringWithSizeBetween(LoginCreation.TAILLE_MIN);
 		assertThat(LoginCreation.checkTailleLogin(login)).isTrue();
 
 		// taille limite supérieure
-		login = "abcdefghij";
+		login = buildStringWithSizeBetween(LoginCreation.TAILLE_MAX);
 		assertThat(LoginCreation.checkTailleLogin(login)).isTrue();
 
 		// trop grand
-		login = "abcdefghijk";
+		login = buildStringWithSizeBetween(LoginCreation.TAILLE_MAX + 1);
 		assertThat(LoginCreation.checkTailleLogin(login)).isFalse();
+	}
+
+	public String buildStringWithSizeBetween(int size) {
+
+		String str = "";
+		for (int i = 0; i < size; i++) {
+			str += "0";
+		}
+
+		return str;
 	}
 
 	@Test
