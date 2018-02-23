@@ -1,0 +1,16 @@
+poe\spring\api\UserController.class
+poe\spring\model\User.class
+poe\spring\services\TrajetServices.class
+poe\spring\repository\UserRepository.class
+poe\spring\services\UserServices.class
+poe\spring\controller\HomePageController.class
+poe\spring\controller\TrajetPageController.class
+poe\spring\repository\TrajetRepository.class
+poe\spring\AppSpring.class
+poe\spring\SPRING\GreetingsController.class
+poe\spring\SPRING\Greeting.class
+poe\spring\api\TrajetRestController.class
+poe\spring\form\UserForm.class
+poe\spring\metier\LoginCreation.class
+poe\spring\form\TrajetForm.class
+poe\spring\model\Trajet.class

@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Trajet {
@@ -17,7 +18,9 @@ public class Trajet {
 	private String villeArrivee;
 	private Date dateDepart;
 	private Double prix;
-	private int nbPlace;
+	private int nbPlaces;
+	@ManyToOne
+	private User user;
 
 	public Long getId() {
 		return id;
@@ -59,12 +62,20 @@ public class Trajet {
 		this.prix = prix;
 	}
 
-	public int getNbPlace() {
-		return nbPlace;
+	public int getNbPlaces() {
+		return nbPlaces;
 	}
 
-	public void setNbPlace(int nbPlace) {
-		this.nbPlace = nbPlace;
+	public void setNbPlaces(int nbPlace) {
+		this.nbPlaces = nbPlace;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 }

@@ -33,4 +33,12 @@ public class TrajetServices {
 		Trajet trajet = trajetRepository.findOne(id);
 		return trajet;
 	}
+
+	public List<Trajet> chercherParVilleDepartOuVillaArrivee(String ville, String villebis) {
+
+		List<Trajet> listTrajet = trajetRepository.findByVilleDepartOrVilleArrivee(ville, villebis);
+
+		return listTrajet;
+
+	}
 }

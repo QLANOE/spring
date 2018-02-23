@@ -47,7 +47,7 @@ public class UserServicesTests {
 
 		assertThat(userRepository.count() == 0);
 
-		String login = "bob";
+		String login = "boby";
 		String password = "pwd";
 
 		User userCreated = userServices.inscription(login, password);
@@ -69,9 +69,12 @@ public class UserServicesTests {
 		String password = "pwd";
 
 		User userCreated = userServices.inscription(login, password);
-		User userCreated2 = userServices.inscription(login, password);
-		assertThat(userCreated).isNotNull();
-		assertThat(userCreated2).isNull();
+		User userCreated2;
+		try {
+			userCreated2 = userServices.inscription(login, password);
+		} catch (BadAttributeValueExpException e) {
+			assertThat(true).isTrue();
+		}
 
 	}
 

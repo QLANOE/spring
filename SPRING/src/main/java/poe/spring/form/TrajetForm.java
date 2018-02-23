@@ -2,15 +2,20 @@ package poe.spring.form;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import poe.spring.model.Trajet;
+import poe.spring.model.User;
 
 public class TrajetForm {
 
 	private String villeDepart;
 	private String villeArrivee;
+	@DateTimeFormat(pattern = "yyyy-mm-dd")
 	private Date dateDepart;
 	private Double prix;
 	private int nbPlace;
+	private User user;
 
 	public String getVilleDepart() {
 		return villeDepart;
@@ -52,6 +57,14 @@ public class TrajetForm {
 		this.nbPlace = nbPlace;
 	}
 
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 	public Trajet trajetFormToTrajet() {
 
 		Trajet trajet = new Trajet();
@@ -59,7 +72,8 @@ public class TrajetForm {
 		trajet.setVilleArrivee(this.villeArrivee);
 		trajet.setDateDepart(this.dateDepart);
 		trajet.setPrix(this.prix);
-		trajet.setNbPlace(this.nbPlace);
+		trajet.setNbPlaces(this.nbPlace);
+		trajet.setUser(user);
 
 		return trajet;
 	}

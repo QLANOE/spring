@@ -1,8 +1,12 @@
 package poe.spring.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class User {
@@ -12,6 +16,16 @@ public class User {
 	private Long id;
 	private String login;
 	private String password;
+	@OneToMany
+	private List<Trajet> trajets = new ArrayList<>();
+
+	public List<Trajet> getTrajets() {
+		return trajets;
+	}
+
+	public void setTrajets(List<Trajet> trajets) {
+		this.trajets = trajets;
+	}
 
 	public Long getId() {
 		return id;
